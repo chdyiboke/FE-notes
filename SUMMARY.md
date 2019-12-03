@@ -8,4 +8,6 @@
   * [移动端适配](css/移动端适配.md) 
   * [line-height与border](css/line-height与border.md)
   * [fixed与overflow-srcolling](css/fixed与overflow-srcolling.md)
+* [tools](tools/README.md)
+  * [prettier](tools/代码格式化.md)
 * [book](love/book.md)
