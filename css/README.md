@@ -1,6 +1,7 @@
 # 积累实战中遇到的CSS相关问题及解决方法  
 
 * [CSS](README.md)
+  * [垂直居中](垂直居中.md)
   * [移动端0.5px](移动端点5px.md)
   * [background-color的覆盖范围](backgroud-color.md)
   * [移动端适配](移动端适配.md)

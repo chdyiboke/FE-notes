@@ -1,5 +1,4 @@
 .DS_*
 *.log
 
-_book/*
 local/*
