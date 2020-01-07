@@ -4,6 +4,7 @@
   * [行内&块元素](html/行内&块元素.md)
   * [获取4位验证码](html/获取4位验证码.md) 
 * [javascript](javascript/README.md)
+  * [setState](javascript/React的setState.md)
 * [css](css/README.md)
   * [垂直居中](css/垂直居中.md)
   * [移动端0.5px](css/移动端点5px.md)
