@@ -1,6 +1,6 @@
 # React的setState
 
-Why setState executes in setTimeout will become sync？ 
+一、Why setState executes in setTimeout will become sync？ 
 
 ```
 componentDidMount(){
@@ -27,28 +27,30 @@ componentDidMount(){
 
 Why did lemen print behind banana?
 
-the commented:
+the commented:  
 setState is only async batched when it is called inside a React event handler, otherwise it is sync. 
-
-
+  
+  
+二、为什么 setState 是异步的？
 https://github.com/facebook/react/issues/11527
 
 因为this.state不会立即刷新。如果立即将其刷新，我们将无法开始在后台渲染视图的“新版本”，而“旧版本”仍然可见并且可以交互。他们独立的状态更新会发生冲突。 
 这样，它不会破坏之间内在一致性的保证props，state和refs。 确保提升状态是安全的。
 
 
-整体意思就是，批量更新是有益于性能的。在react的钩子函数和普通函数是异步的，其他都是同步的。虽然那些setState不是异步更新，但是可以保证页面异步渲染，从而保证一致性。
+整体意思就是，批量更新是有益于性能的。在react的钩子函数和普通函数是异步的，其他都是同步的。虽然setState不是同步更新state，但是可以保证内部状态一致性。
 
 关于props更新：
 props直到重新渲染父组件，然后同步执行
 
 
 
-react接收到新的props时，怎么重新渲染
+三、react接收到新的props时，怎么重新渲染
 
 子组件显示父组件穿过来的props有两种方式：
 1. 直接使用
 这种方式，父组件改变props后，子组件重新渲染，由于直接使用的props，所以我们不需要做什么就可以正常显示最新的props
+
 ```
 class Child extends Component {
     render() {
@@ -72,6 +74,7 @@ class Child extends Component {
         };
     }
     static getDerivedStateFromProps(props, state){
+        // componentwillreceiveprops 将要被舍弃
         this.setState({someThings: props.someThings});
     }
     render() {

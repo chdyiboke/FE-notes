@@ -5,6 +5,7 @@
   * [获取4位验证码](html/获取4位验证码.md) 
 * [javascript](javascript/README.md)
   * [setState](javascript/React的setState.md)
+  * [await](javascript/await.md)  
 * [css](css/README.md)
   * [垂直居中](css/垂直居中.md)
   * [移动端0.5px](css/移动端点5px.md)
