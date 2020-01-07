@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>book · cy</title>
+        <title>await · cy</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="../css/" />
     
-    <link rel="prev" href="../tools/代码格式化.html" />
+    
+    <link rel="prev" href="React的setState.html" />
     
 
     </head>
@@ -154,9 +156,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="../javascript/">
+        <li class="chapter " data-level="1.3" data-path="./">
             
-                <a href="../javascript/">
+                <a href="./">
             
                     
                     javascript
@@ -168,9 +170,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="../javascript/React的setState.html">
+        <li class="chapter " data-level="1.3.1" data-path="React的setState.html">
             
-                <a href="../javascript/React的setState.html">
+                <a href="React的setState.html">
             
                     
                     setState
@@ -181,9 +183,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../javascript/await.html">
+        <li class="chapter active" data-level="1.3.2" data-path="await.html">
             
-                <a href="../javascript/await.html">
+                <a href="await.html">
             
                     
                     await
@@ -328,9 +330,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6" data-path="book.html">
+        <li class="chapter " data-level="1.6" data-path="../love/book.html">
             
-                <a href="book.html">
+                <a href="../love/book.html">
             
                     
                     book
@@ -371,7 +373,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >book</a>
+        <a href=".." >await</a>
     </h1>
 </div>
 
@@ -386,9 +388,85 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x77E5;&#x8BC6;&#xFF08;&#x4E66;&#x7C4D;&#x3001;&#x7F51;&#x7AD9;&#x4E4B;&#x7C7B;">&#x77E5;&#x8BC6;&#xFF08;&#x4E66;&#x7C4D;&#x3001;&#x7F51;&#x7AD9;&#x4E4B;&#x7C7B;</h1>
-<p><a href="https://juejin.im/post/5db10690e51d4529df5f65cb" target="_blank">https://juejin.im/post/5db10690e51d4529df5f65cb</a></p>
+                                <h1 id="await">await</h1>
+<pre><code>var a = 0;
+async function test(){
+ let result= await 10 + a;
+ console.log(result);
+}
 
+test();
+a=a+1;
+</code></pre><p>&#x8F93;&#x5165;&#xFF1A;11</p>
+<pre><code>var a = 0;
+async function test(){
+ let result = a + await 10; // &#x6B64;&#x65F6;a=0
+ console.log(result);
+}
+
+test();
+a = a + 1;
+</code></pre><p>&#x8F93;&#x5165;&#xFF1A;10</p>
+<p>async &#x4EE3;&#x8868;&#x5F02;&#x6B65;&#xFF0C;await &#x4EE3;&#x8868;&#x7B49;&#x5F85;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF0C;&#x539F;&#x7406;&#x662F; promise&#x3002;</p>
+<pre><code>function getConstant() {
+return 1
+}
+
+async function getAsyncConstant() {
+return 1
+}
+
+async function getPromise() {
+return new Promise((resolved, rejected)=&gt; {
+resolved(1)
+});
+}
+
+async function test() {
+a = 2
+c = 1
+await getConstant();
+d = 3
+await getPromise();
+d = 4
+await getAsyncConstant();
+return 2
+}
+</code></pre><p>babel &#x8F6C;&#x6362;</p>
+<pre><code>function getConstant() {
+return 1;
+}
+
+function getAsyncConstant() {
+return Promise.resolve().then(function () {
+return 1;
+});
+}
+
+function getPromise() {
+return Promise.resolve().then(function () {
+return new Promise((resolved, rejected) =&gt; {
+resolved(1);
+});
+});
+}
+
+function test() {
+return Promise.resolve().then(function () {
+a = 2;
+c = 1;
+return getConstant();
+}).then(function () {
+d = 3;
+return getPromise();
+}).then(function () {
+d = 4;
+return getAsyncConstant();
+}).then(function () {
+return 2;
+});
+}
+</code></pre>
                                 
                                 </section>
                             
@@ -415,10 +493,14 @@
 
             
                 
-                <a href="../tools/代码格式化.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: prettier">
+                <a href="React的setState.html" class="navigation navigation-prev " aria-label="Previous page: setState">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="../css/" class="navigation navigation-next " aria-label="Next page: css">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -427,7 +509,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"book","level":"1.6","depth":1,"previous":{"title":"prettier","level":"1.5.1","depth":2,"path":"tools/代码格式化.md","ref":"tools/代码格式化.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"蔡毅","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"9787121324758","variables":{},"title":"cy","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"cy的github":"https://github.com/chdyiboke/"}},"gitbook":"*","description":"只要你想做的事，全世界都会给你让路。","extension":null},"file":{"path":"love/book.md","mtime":"2019-12-14T08:29:41.811Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-07T02:47:29.617Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"await","level":"1.3.2","depth":2,"next":{"title":"css","level":"1.4","depth":1,"path":"css/README.md","ref":"css/README.md","articles":[{"title":"垂直居中","level":"1.4.1","depth":2,"path":"css/垂直居中.md","ref":"css/垂直居中.md","articles":[]},{"title":"移动端0.5px","level":"1.4.2","depth":2,"path":"css/移动端点5px.md","ref":"css/移动端点5px.md","articles":[]},{"title":"background-color的覆盖范围","level":"1.4.3","depth":2,"path":"css/backgroud-color.md","ref":"css/backgroud-color.md","articles":[]},{"title":"移动端适配","level":"1.4.4","depth":2,"path":"css/移动端适配.md","ref":"css/移动端适配.md","articles":[]},{"title":"line-height与border","level":"1.4.5","depth":2,"path":"css/line-height与border.md","ref":"css/line-height与border.md","articles":[]},{"title":"fixed与overflow-srcolling","level":"1.4.6","depth":2,"path":"css/fixed与overflow-srcolling.md","ref":"css/fixed与overflow-srcolling.md","articles":[]}]},"previous":{"title":"setState","level":"1.3.1","depth":2,"path":"javascript/React的setState.md","ref":"javascript/React的setState.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"蔡毅","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"9787121324758","variables":{},"title":"cy","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"cy的github":"https://github.com/chdyiboke/"}},"gitbook":"*","description":"只要你想做的事，全世界都会给你让路。","extension":null},"file":{"path":"javascript/await.md","mtime":"2020-01-07T02:59:40.356Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-07T02:47:29.617Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
